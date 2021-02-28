@@ -942,96 +942,96 @@ if(tempLine!=null) {
         valueTemp= prefs.getString(getString(R.string.pref_color_line_key),getString(R.string.pref_color_yellow_value));
         if(valueTemp.equals(getString(R.string.pref_color_red_value)))
         {
-            this.colorMark = new Vector3(255, 0, 0);
+            this.colorLine = new Vector3(255, 0, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_blue_value)))
         {
-            this.colorMark = new Vector3(0, 0, 255);
+            this.colorLine = new Vector3(0, 0, 255);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_green_value)))
         {
-            this.colorMark = new Vector3(0, 255, 0);
+            this.colorLine = new Vector3(0, 255, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_yellow_value)))
         {
-            this.colorMark = new Vector3(255, 255, 0);
+            this.colorLine = new Vector3(255, 255, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_white_value)))
         {
-            this.colorMark = new Vector3(255, 255, 255);
+            this.colorLine = new Vector3(255, 255, 255);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_black_value)))
         {
-            this.colorMark = new Vector3(0, 0, 0);
+            this.colorLine = new Vector3(0, 0, 0);
 
         }
 
         valueTemp= prefs.getString(getString(R.string.pref_color_origin_key),getString(R.string.pref_color_white_value));
         if(valueTemp.equals(getString(R.string.pref_color_red_value)))
         {
-            this.colorMark = new Vector3(255, 0, 0);
+            this.colorOrigin = new Vector3(255, 0, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_blue_value)))
         {
-            this.colorMark = new Vector3(0, 0, 255);
+            this.colorOrigin = new Vector3(0, 0, 255);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_green_value)))
         {
-            this.colorMark = new Vector3(0, 255, 0);
+            this.colorOrigin = new Vector3(0, 255, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_yellow_value)))
         {
-            this.colorMark = new Vector3(255, 255, 0);
+            this.colorOrigin = new Vector3(255, 255, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_white_value)))
         {
-            this.colorMark = new Vector3(255, 255, 255);
+            this.colorOrigin = new Vector3(255, 255, 255);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_black_value)))
         {
-            this.colorMark = new Vector3(0, 0, 0);
+            this.colorOrigin = new Vector3(0, 0, 0);
 
         }
 
         valueTemp= prefs.getString(getString(R.string.pref_color_element_key),getString(R.string.pref_color_white_value));
         if(valueTemp.equals(getString(R.string.pref_color_red_value)))
         {
-            this.colorMark = new Vector3(255, 0, 0);
+            this.colorElement = new Vector3(255, 0, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_blue_value)))
         {
-            this.colorMark = new Vector3(0, 0, 255);
+            this.colorElement = new Vector3(0, 0, 255);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_green_value)))
         {
-            this.colorMark = new Vector3(0, 255, 0);
+            this.colorElement = new Vector3(0, 255, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_yellow_value)))
         {
-            this.colorMark = new Vector3(255, 255, 0);
+            this.colorElement = new Vector3(255, 255, 0);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_white_value)))
         {
-            this.colorMark = new Vector3(255, 255, 255);
+            this.colorElement = new Vector3(255, 255, 255);
 
         }
         else if(valueTemp.equals(getString(R.string.pref_color_black_value)))
         {
-            this.colorMark = new Vector3(0, 0, 0);
+            this.colorElement = new Vector3(0, 0, 0);
 
         }
 
