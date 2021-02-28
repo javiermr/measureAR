@@ -372,15 +372,37 @@ if(tempLine!=null) {
 
 
               Vector3 tempDir = directionTwoPoints(dst, mov2imgNode);
-              float angle = Vector3.angleBetweenVectors(tempDir, last.getDir());
+              float angle = Math.abs(slope(ori,dst)+Vector3.angleBetweenVectors(tempDir, last.getDir()));
 
               float localD = distanceTwoPoints(dst, mov2imgNode);
 
               ViewRenderable r = (ViewRenderable) j.getRenderable();
               View v = r.getView();
               TextView tva = v.findViewById(R.id.textView2);
-              tva.setText(DISTANCE_STRING + (localD) + this.unitString + "\n ⊾: " + angle);
               tva.setBackgroundColor(0xff00ff00);
+
+               if(this.quaternionAngles)
+               {
+                   Quaternion q1 = Quaternion.lookRotation(tempDir, last.getDir());
+
+                   double sqw = q1.w*q1.w;
+                   double sqx = q1.x*q1.x;
+                   double sqy = q1.y*q1.y;
+                   double sqz = q1.z*q1.z;
+                   double aX = Math.atan2(2.0 * (q1.x*q1.y + q1.z*q1.w),(sqx - sqy - sqz + sqw));
+                   double aZ = Math.atan2(2.0 * (q1.y*q1.z + q1.x*q1.w),(-sqx - sqy + sqz + sqw));
+                   double aY = Math.asin(-2.0 * (q1.x*q1.z - q1.y*q1.w));
+
+
+
+                   tva.setText(DISTANCE_STRING + (localD) + this.unitString + "\n ⊾: " + angle+"\n quaternion Ø: "+Math.toDegrees(aX)+"\n quaternion θ: "+Math.toDegrees(aY)+"\n quaternion Ψ: "+Math.toDegrees(aZ));
+
+               }
+               else {
+                   tva.setText(DISTANCE_STRING + (localD) + this.unitString + "\n ⊾: " + angle);
+               }
+
+
           }
             else if(listElements.size() ==1)
             {
@@ -402,6 +424,7 @@ if(tempLine!=null) {
           else {
                 Vector3 dst = imgNode1.getWorldPosition();
                 float localD = distanceTwoPoints(dst, mov2imgNode);
+
 
                 ViewRenderable r = (ViewRenderable) j.getRenderable();
                 View v = r.getView();
@@ -562,6 +585,27 @@ if(tempLine!=null) {
         return Vector3.subtract(v, u);
     }
 
+    public float slope(Vector3 p1, Vector3 p2) {
+
+        float x1 = p1.x;
+        float x2 = p2.x;
+        float y1 = p1.y;
+        float y2 = p2.y;
+        float z1 = p1.z;
+        float z2 = p2.z;
+
+
+        double a = (z2 - z1) / Math.sqrt((Math.pow(y2 - y1, 2) + Math.pow(x2 - x1, 2)));
+
+        if (a > 0)
+            return 0.f;
+        else if (a < 0)
+            return -180.f;
+
+
+        return 0;
+    }
+
 
 
     public float distanceTwoPoints(Vector3 startPose, Vector3 endPose)
@@ -664,7 +708,7 @@ if(tempLine!=null) {
 
             float angle=Vector3.angleBetweenVectors(last.getDir(),penultimate.getDir());
 
-            penultimate.setAngle(angle);
+            penultimate.setAngle(Math.abs(slope(last.getDir(),penultimate.getDir())+angle));
             ViewRenderable r_before = (ViewRenderable) penultimate.getNode().findByName(LABEL_STRING).getRenderable();
             View v_before = r_before.getView();
             TextView tv = v_before.findViewById(R.id.textView2);
