@@ -48,7 +48,18 @@
         android:entryValues="@array/pref_color_option_values"
         android:key="@string/pref_color_mark_sphere_key"
         android:title="@string/change_color_mark_sphere_key" />
-
+    <ListPreference
+        android:defaultValue="@string/pref_ref_marker_one_value"
+        android:entries="@array/pref_ref_marker_labels"
+        android:entryValues="@array/pref_ref_marker_values"
+        android:key="@string/pref_sphere_size_key"
+        android:title="@string/change_sphere_size" />
+    <ListPreference
+        android:defaultValue="@string/pref_ref_marker_one_value"
+        android:entries="@array/pref_ref_marker_labels"
+        android:entryValues="@array/pref_ref_marker_values"
+        android:key="@string/pref_line_size_key"
+        android:title="@string/change_line_size" />
     <ListPreference
         android:defaultValue="@string/pref_size_label_five_value"
         android:entries="@array/pref_size_labels"
@@ -102,5 +113,10 @@
     <EditTextPreference
         android:defaultValue="@string/pref_size_default"
         android:key="@string/pref_size_key"
+        android:title="@string/text_size"/>
+
+    <EditTextPreference
+        android:defaultValue="@string/pref_alpha_default"
+        android:key="@string/pref_alpha_key"
         android:title="@string/text_size"/>
 </PreferenceScreen>

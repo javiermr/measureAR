@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.develop.augmentedimage.sceneform.Description;
@@ -84,6 +85,9 @@ public class MainActivity extends AppCompatActivity {
     private final static String MARKER_ONE_STRING ="marker_one";
     private final static String MARKER_TWO_STRING ="marker_two";
     private final static String DATA_IMAGE_STRING ="myimages.imgdb";
+    private Float alphaColor;
+    private Float sizeLine;
+    private Float sizeSphere;
 
 
 
@@ -127,10 +131,10 @@ public class MainActivity extends AppCompatActivity {
         setupSharedPreferences();
 
         //Its created the sphere to indicates the element added.a
-        MaterialFactory.makeOpaqueWithColor(this, new Color(this.colorMark.x,this.colorMark.y,this.colorMark.z))
+        MaterialFactory.makeTransparentWithColor(this, new Color(this.colorMark.x,this.colorMark.y,this.colorMark.z,this.alphaColor))
                 .thenAccept(
                         material -> model = ShapeFactory.makeSphere(
-                                0.01f,
+                                this.sizeSphere,
                                 Vector3.zero(), material)
                 );
 
@@ -380,6 +384,8 @@ if(tempLine!=null) {
               View v = r.getView();
               TextView tva = v.findViewById(R.id.textView2);
               tva.setBackgroundColor(0xff00ff00);
+               LinearLayout ll = v.findViewById(R.id.layout2);
+               ll.setAlpha(this.alphaColor);
 
                if(this.quaternionAngles)
                {
@@ -395,11 +401,11 @@ if(tempLine!=null) {
 
 
 
-                   tva.setText(DISTANCE_STRING + (localD) + this.unitString + "\n ⊾: " + angle+"\n quaternion Ø: "+Math.toDegrees(aX)+"\n quaternion θ: "+Math.toDegrees(aY)+"\n quaternion Ψ: "+Math.toDegrees(aZ));
+                   tva.setText(DISTANCE_STRING + roundNumber(localD) + this.unitString + "\n ⊾: " + roundNumber(angle)+"\n quaternion Ø: "+roundNumber(Math.toDegrees(aX))+"\n quaternion θ: "+roundNumber(Math.toDegrees(aY))+"\n quaternion Ψ: "+roundNumber(Math.toDegrees(aZ)));
 
                }
                else {
-                   tva.setText(DISTANCE_STRING + (localD) + this.unitString + "\n ⊾: " + angle);
+                   tva.setText(DISTANCE_STRING + roundNumber(localD) + this.unitString + "\n ⊾: " + roundNumber(angle));
                }
 
 
@@ -417,7 +423,8 @@ if(tempLine!=null) {
                 TextView tva = v.findViewById(R.id.textView2);
                 tva.setText(DISTANCE_STRING + (localD) + this.unitString);
                 tva.setBackgroundColor(0xff00ff00);
-
+                LinearLayout ll = v.findViewById(R.id.layout2);
+                ll.setAlpha(this.alphaColor);
 
 
             }
@@ -429,8 +436,10 @@ if(tempLine!=null) {
                 ViewRenderable r = (ViewRenderable) j.getRenderable();
                 View v = r.getView();
                 TextView tva = v.findViewById(R.id.textView2);
-                tva.setText(DISTANCE_STRING + (localD) + this.unitString);
+                tva.setText(DISTANCE_STRING + roundNumber(localD) + this.unitString);
                 tva.setBackgroundColor(0xff00ff00);
+               LinearLayout ll = v.findViewById(R.id.layout2);
+               ll.setAlpha(this.alphaColor);
 
             }
             j.setWorldPosition(imgNode2.getWorldPosition());
@@ -482,13 +491,13 @@ if(tempLine!=null) {
                           final Vector3 directionFromTopToBottom = difference.normalized();
                           final Quaternion rotationFromAToB =
                                   Quaternion.lookRotation(directionFromTopToBottom, Vector3.up());
-                          MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z))
+                          MaterialFactory.makeTransparentWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z,this.alphaColor))
                                   .thenAccept(
                                           material -> {
                                 /* Then, create a rectangular prism, using ShapeFactory.makeCube() and use the difference vector
                                        to extend to the necessary length.  */
                                               ModelRenderable model = ShapeFactory.makeCube(
-                                                      new Vector3(.01f, .01f, difference.length()),
+                                                      new Vector3(this.sizeLine, this.sizeLine, difference.length()),
                                                       Vector3.zero(), material);
                                 /* Last, set the world rotation of the node to the rotation calculated earlier and set the world position to
                                        the midpoint between the given points . */
@@ -541,13 +550,13 @@ if(tempLine!=null) {
                               final Quaternion rotationFromAToB =
                                       Quaternion.lookRotation(directionFromTopToBottom, Vector3.up());
 
-                              MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z))
+                              MaterialFactory.makeTransparentWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z,this.alphaColor))
                                       .thenAccept(
                                               material -> {
                                     /* Then, create a rectangular prism, using ShapeFactory.makeCube() and use the difference vector
                                            to extend to the necessary length.  */
                                                   ModelRenderable model = ShapeFactory.makeCube(
-                                                          new Vector3(.01f, .01f, difference.length()),
+                                                          new Vector3(this.sizeLine, this.sizeLine, difference.length()),
                                                           Vector3.zero(), material);
                                     /* Last, set the world rotation of the node to the rotation calculated earlier and set the world position to
                                            the midpoint between the given points . */
@@ -666,12 +675,12 @@ if(tempLine!=null) {
                     final Quaternion rotationFromAToB =
                             Quaternion.lookRotation(directionFromTopToBottom, Vector3.up());
 
-                    MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z))
+                    MaterialFactory.makeTransparentWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z))
                             .thenAccept(
                                     material -> {
 
                                         ModelRenderable model = ShapeFactory.makeCube(
-                                                new Vector3(.01f, .01f, difference.length()),
+                                                new Vector3(this.sizeLine, this.sizeLine, difference.length()),
                                                 Vector3.zero(), material);
 
                                         i.setRenderable(model);
@@ -696,8 +705,9 @@ if(tempLine!=null) {
         ViewRenderable r = (ViewRenderable)node.getRenderable();
         View v = r.getView();
         TextView tva = v.findViewById(R.id.textView2);
-        tva.setText(POINT_STRING+(listElements.size())+"\n"+DISTANCE_STRING + (localD) + this.unitString);
-
+        tva.setText(POINT_STRING+(listElements.size())+"\n"+DISTANCE_STRING + roundNumber(localD) + this.unitString);
+        LinearLayout ll = v.findViewById(R.id.layout2);
+        ll.setAlpha(this.alphaColor);
         //calculate the angle when there are more than 3 points
         if(listElements.size()>2)
         {
@@ -712,6 +722,9 @@ if(tempLine!=null) {
             ViewRenderable r_before = (ViewRenderable) penultimate.getNode().findByName(LABEL_STRING).getRenderable();
             View v_before = r_before.getView();
             TextView tv = v_before.findViewById(R.id.textView2);
+
+
+
             if(this.quaternionAngles)
             {
                 Quaternion q1 = Quaternion.lookRotation(penultimate.getDir(), last.getDir());
@@ -726,11 +739,11 @@ if(tempLine!=null) {
 
 
 
-                tv.setText(POINT_STRING + (listElements.size()-1) + "\n"+DISTANCE_STRING + (penultimate.getDistance()) + this.unitString + "\n ⊾: " + penultimate.getAngle()+"\n quaternion Ø: "+Math.toDegrees(aX)+"\n quaternion θ: "+Math.toDegrees(aY)+"\n quaternion Ψ: "+Math.toDegrees(aZ));
+                tv.setText(POINT_STRING + (listElements.size()-1) + "\n"+DISTANCE_STRING + roundNumber(penultimate.getDistance()) + this.unitString + "\n ⊾: " + roundNumber(penultimate.getAngle())+"\n quaternion Ø: "+roundNumber(Math.toDegrees(aX))+"\n quaternion θ: "+roundNumber(Math.toDegrees(aY))+"\n quaternion Ψ: "+roundNumber(Math.toDegrees(aZ)));
 
             }
             else {
-                tv.setText(POINT_STRING + (listElements.size()-1) + "\n"+DISTANCE_STRING + (penultimate.getDistance()) + this.unitString + "\n ⊾: " + penultimate.getAngle());
+                tv.setText(POINT_STRING + (listElements.size()-1) + "\n"+DISTANCE_STRING + roundNumber(penultimate.getDistance()) + this.unitString + "\n ⊾: " + roundNumber(penultimate.getAngle()));
             }
 
         }
@@ -868,13 +881,13 @@ if(tempLine!=null) {
         final Vector3 directionFromTopToBottom = difference.normalized();
         final Quaternion rotationFromAToB =
                 Quaternion.lookRotation(directionFromTopToBottom, Vector3.up());
-        MaterialFactory.makeOpaqueWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z))
+        MaterialFactory.makeTransparentWithColor(getApplicationContext(), new Color(this.colorLine.x, this.colorLine.y, this.colorLine.z,this.alphaColor))
                 .thenAccept(
                         material -> {
                             /* Then, create a rectangular prism, using ShapeFactory.makeCube() and use the difference vector
                                    to extend to the necessary length.  */
                             ModelRenderable model = ShapeFactory.makeCube(
-                                    new Vector3(.01f, .01f, difference.length()),
+                                    new Vector3(this.sizeLine, this.sizeLine, difference.length()),
                                     Vector3.zero(), material);
                             /* Last, set the world rotation of the node to the rotation calculated earlier and set the world position to
                                    the midpoint between the given points . */
@@ -927,10 +940,12 @@ if(tempLine!=null) {
 
     }
 
+    private double roundNumber(double x) {
+        return Math.round(x * 100.0) / 100.0;
+    }
 
 
-
-    public void onSettings(View view) {
+    private void onSettings(View view) {
 
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
@@ -955,7 +970,9 @@ if(tempLine!=null) {
         this.widthImage = 50.f;
         this.scaleMarker = new Vector3(0.01f, 0.01f, 0.01f);
         this.moveCenter = new Vector3(0,0.0f,0.05f);
-
+        this.alphaColor = 1.0f;
+        this.sizeLine = .001f;
+        this.sizeSphere = 0.001f;
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
@@ -1118,7 +1135,7 @@ if(tempLine!=null) {
         valueTemp= prefs.getString(getString(R.string.pref_labels_size_key),getString(R.string.pref_size_label_five_value));
         if(valueTemp.equals(getString(R.string.pref_size_label_two_value)))
         {
-            this.labelsSize = 51200; //2cm
+            this.labelsSize = 10240; //2.5cm
 
         }
         else if(valueTemp.equals(getString(R.string.pref_size_label_five_value)))
@@ -1171,6 +1188,41 @@ if(tempLine!=null) {
         }
 
 
+        valueTemp= prefs.getString(getString(R.string.pref_sphere_size_key),getString(R.string.pref_ref_marker_one_value));
+
+        if(valueTemp.equals(getString(R.string.pref_ref_marker_one_value)))
+        {
+        this.sizeSphere = 0.001f;
+        }
+        else if(valueTemp.equals(getString(R.string.pref_ref_marker_half_value)))
+        {
+            this.sizeSphere = 0.005f;
+
+        }
+        else if(valueTemp.equals(getString(R.string.pref_ref_marker_normal_value)))
+        {
+            this.sizeSphere = 0.01f;
+
+        }
+
+
+        valueTemp= prefs.getString(getString(R.string.pref_line_size_key),getString(R.string.pref_ref_marker_one_value));
+
+        if(valueTemp.equals(getString(R.string.pref_ref_marker_one_value)))
+        {
+            this.sizeLine = 0.001f;
+        }
+        else if(valueTemp.equals(getString(R.string.pref_ref_marker_half_value)))
+        {
+            this.sizeLine = 0.005f;
+
+        }
+        else if(valueTemp.equals(getString(R.string.pref_ref_marker_normal_value)))
+        {
+            this.sizeLine = 0.01f;
+
+        }
+
 
         this.externalImage = prefs.getBoolean(getString(R.string.pref_external_image_key),false);
 
@@ -1180,8 +1232,7 @@ if(tempLine!=null) {
 
         this.widthImage = Float.parseFloat(prefs.getString(getString(R.string.pref_size_key),getString(R.string.pref_size_default))) / 1000.f;
 
-
-
+        this.alphaColor = Float.parseFloat(prefs.getString(getString(R.string.pref_alpha_key),getString(R.string.pref_alpha_default))) / 100.f;
 
     }
 
