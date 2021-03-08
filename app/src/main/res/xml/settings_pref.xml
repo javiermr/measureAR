@@ -118,5 +118,5 @@
     <EditTextPreference
         android:defaultValue="@string/pref_alpha_default"
         android:key="@string/pref_alpha_key"
-        android:title="@string/text_size"/>
+        android:title="@string/text_alpha"/>
 </PreferenceScreen>
