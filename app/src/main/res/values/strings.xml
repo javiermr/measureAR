@@ -44,8 +44,8 @@
     <string name="pref_labels_size_key" translatable="false">labels_size</string>
     <string name="pref_ref_marker_size_key" translatable="false">ref_marker</string>
     <string name="pref_move_center_key" translatable="false">move_center</string>
-    <string name="pref_sphere_size_key" translatable="false">ref_marker</string>
-    <string name="pref_line_size_key" translatable="false">ref_marker</string>
+    <string name="pref_sphere_size_key" translatable="false">ref_sphere_size</string>
+    <string name="pref_line_size_key" translatable="false">ref_line_size</string>
 
 
 
