@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="@string/pref_focus_key"
+        android:summaryOff="Off"
+        android:summaryOn="On"
+        android:title="@string/display_text"/>
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/pref_quaternion_key"
+        android:summaryOff="Off"
+        android:summaryOn="On"
+        android:title="@string/quaternion_text"/>
+
+    <ListPreference
+        android:defaultValue="@string/pref_units_mm_value"
+        android:entries="@array/pref_units_option_labels"
+        android:entryValues="@array/pref_units_option_values"
+        android:key="@string/pref_measure_units_key"
+        android:title="@string/change_measure_units" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_color_yellow_value"
+        android:entries="@array/pref_color_option_labels"
+        android:entryValues="@array/pref_color_option_values"
+        android:key="@string/pref_color_line_key"
+        android:title="@string/change_line_color" />
+
+
+    <ListPreference
+        android:defaultValue="@string/pref_color_white_value"
+        android:entries="@array/pref_color_option_labels"
+        android:entryValues="@array/pref_color_option_values"
+        android:key="@string/pref_color_origin_key"
+        android:title="@string/change_origin_color" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_color_white_value"
+        android:entries="@array/pref_color_option_labels"
+        android:entryValues="@array/pref_color_option_values"
+        android:key="@string/pref_color_element_key"
+        android:title="@string/change_element_color" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_color_blue_value"
+        android:entries="@array/pref_color_option_labels"
+        android:entryValues="@array/pref_color_option_values"
+        android:key="@string/pref_color_mark_sphere_key"
+        android:title="@string/change_color_mark_sphere_key" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_size_label_five_value"
+        android:entries="@array/pref_size_labels"
+        android:entryValues="@array/pref_size_values"
+        android:key="@string/pref_labels_size_key"
+        android:title="@string/change_labels_size" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_ref_marker_one_value"
+        android:entries="@array/pref_ref_marker_labels"
+        android:entryValues="@array/pref_ref_marker_values"
+        android:key="@string/pref_ref_marker_size_key"
+        android:title="@string/change_reference_marker_size" />
+
+    <ListPreference
+        android:defaultValue="@string/pref_move_center_half_value"
+        android:entries="@array/pref_move_marker_labels"
+        android:entryValues="@array/pref_move_marker_values"
+        android:key="@string/pref_move_center_key"
+        android:title="@string/change_move_maker" />
+
+
+    <CheckBoxPreference
+        android:defaultValue="false"
+        android:key="@string/pref_external_image_key"
+        android:summaryOff="Off"
+        android:summaryOn="On"
+        android:title="@string/external_image"/>
+
+    <Preference
+        android:title="@string/pref_image_one"
+        android:key="@string/pref_image_one_key"
+        android:summary=""
+        />
+    <EditTextPreference
+        android:key="@string/pref_external_path_one_key"
+        android:defaultValue=""
+      />
+
+    <Preference
+        android:title="@string/pref_image_two"
+        android:key="@string/pref_image_two_key"
+        android:summary=""
+
+        />
+    <EditTextPreference
+        android:key="@string/pref_external_path_two_key"
+        android:defaultValue=""
+
+        />
+    <EditTextPreference
+        android:defaultValue="@string/pref_size_default"
+        android:key="@string/pref_size_key"
+        android:title="@string/text_size"/>
+</PreferenceScreen>

@@ -1,0 +1,83 @@
+<resources>
+    <!-- Label ordering must match values -->
+    <array name="pref_color_option_labels">
+        <item>@string/pref_color_label_red</item>
+        <item>@string/pref_color_label_blue</item>
+        <item>@string/pref_color_label_green</item>
+        <item>@string/pref_color_label_yellow</item>
+        <item>@string/pref_color_label_white</item>
+        <item>@string/pref_color_label_black</item>
+
+    </array>
+
+    <array name="pref_color_option_values">
+        <item>@string/pref_color_red_value</item>
+        <item>@string/pref_color_blue_value</item>
+        <item>@string/pref_color_green_value</item>
+        <item>@string/pref_color_yellow_value</item>
+        <item>@string/pref_color_white_value</item>
+        <item>@string/pref_color_black_value</item>
+
+    </array>
+
+
+
+    <array name="pref_units_option_labels">
+        <item>@string/pref_units_mm_label</item>
+        <item>@string/pref_units_cm_label</item>
+        <item>@string/pref_units_meter_label</item>
+
+    </array>
+
+    <array name="pref_units_option_values">
+        <item>@string/pref_units_mm_value</item>
+        <item>@string/pref_units_cm_value</item>
+        <item>@string/pref_units_meter_value</item>
+    </array>
+
+
+
+    <array name="pref_size_labels">
+        <item>@string/pref_size_label_two</item>
+        <item>@string/pref_size_label_five</item>
+        <item>@string/pref_size_label_ten</item>
+
+    </array>
+
+    <array name="pref_size_values">
+        <item>@string/pref_size_label_two_value</item>
+        <item>@string/pref_size_label_five_value</item>
+        <item>@string/pref_size_label_ten_value</item>
+    </array>
+
+
+
+    <array name="pref_ref_marker_labels">
+        <item>@string/pref_ref_marker_one</item>
+        <item>@string/pref_ref_marker_half</item>
+        <item>@string/pref_ref_marker_normal</item>
+
+    </array>
+
+    <array name="pref_ref_marker_values">
+        <item>@string/pref_ref_marker_one_value</item>
+        <item>@string/pref_ref_marker_half_value</item>
+        <item>@string/pref_ref_marker_normal_value</item>
+    </array>
+
+
+
+    <array name="pref_move_marker_labels">
+        <item>@string/pref_move_center_zero_label</item>
+        <item>@string/pref_move_center_half_label</item>
+        <item>@string/pref_move_center_one_label</item>
+
+    </array>
+
+    <array name="pref_move_marker_values">
+        <item>@string/pref_move_center_zero_value</item>
+        <item>@string/pref_move_center_half_value</item>
+        <item>@string/pref_move_center_one_value</item>
+    </array>
+
+</resources>
